@@ -1,0 +1,18 @@
+{
+  "name": "ER-mailbot",
+  "version": "0.0.0",
+  "description": "Mailchimp and notification bot for Elephant Rebellion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tayodele/er-bot.git"
+  },
+  "author": "Timothy Ayodele",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/Tayodele/er-bot/issues"
+  }
+}
