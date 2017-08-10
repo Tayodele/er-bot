@@ -1,10 +1,14 @@
 {
   "name": "ER-mailbot",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Mailchimp and notification bot for Elephant Rebellion",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "fbgraph": ">=1.4.1",
+    "mailchimp-api-v3": "^1.7.0",
   },
   "repository": {
     "type": "git",
