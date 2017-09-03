@@ -1,6 +1,6 @@
 fb = require('fbgraph');
 var fs = require('fs');
-var keyfile = require('~/keys.json');
+var keyfile = './keys.json';
 var keys = JSON.parse(fs.readFileSync(keyfile,'utf8'));
 var accessToken = "";
 
@@ -12,7 +12,7 @@ fb.setAccessToken(accessToken);
 
 var self = {
 
-	postComment: = function(sPost, sComment, callback) {
+	postComment: function(sPost, sComment, callback) {
 		oParams = {
 			"message": sPost,
 		};
@@ -24,7 +24,7 @@ var self = {
 		callback();
 	},
 
-	makePost: = function(sMessage,callback) {
+	makePost: function(sMessage,callback) {
 		var oPostmsg = {
 			"message": sMessage
 		};

@@ -1,29 +1,28 @@
 var fs = require('fs');
-var keyfile = require('~/keys.json');
+var keyfile = './keys.json';
 var keys = JSON.parse(fs.readFileSync(keyfile,'utf8'));
-var Mailchimp = require('mailchimp');
+var Mailchimp = require('mailchimp-api-v3');
 var mailchimp = new Mailchimp(keys.mailchimp_key);
 var coreList = "eaa08a2c7b";
 
 self = {
 
 	sendEmailtoList: function(aContent,callback) {
-		mailchimp.get("/lists/"+coreList+"/members",{
-			"fields": "id,email_address",
-			"status": "subscribed"
-		}, function(err, res){
-			var members = res.members
+		mailchimp.get("/lists/"+coreList+"/members", function(err, result){
+			var members = JSON.parse(result).members;
+			console.log(members);
 			members.forEach(function(mem){
-				mailchimp.post("/automations/f4491285cd/emails/41895f2486/queue",mem.email_address,function(err,res){
-					if(err){
-						console.log(err);
-					}
-				});
+				if(typeof(mem) != "undefined"){
+					mailchimp.post("/automations/f4491285cd/emails/41895f2486/queue",mem.email_address,function(err,res){
+						if(err){
+							console.log(err);
+						}
+					});
+				}
 			});
+			callback();
 		});
-		callback();
-	},
-
+	}
 };
 
 module.exports = self;
