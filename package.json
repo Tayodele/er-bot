@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "fbgraph": ">=1.4.1",
-    "mailchimp-api-v3": "^1.7.0"
+    "mailchimp-api-v3": "^1.7.0",
+    "googleapis": "~21.3.0",
+    "google-auth-library": "~0.10.0"
   },
   "repository": {
     "type": "git",
