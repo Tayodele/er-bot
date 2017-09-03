@@ -10,21 +10,17 @@ self = {
 	sendEmailtoList: function(aContent,callback) {
 		mailchimp.get("/lists/"+coreList+"/members")
 		.then(function(result){
-			var members = JSON.parse(result).members;
-			console.log(members);
-			members.forEach(function(mem){
-				if(typeof(mem) != "undefined"){
-					mailchimp.post("/automations/f4491285cd/emails/41895f2486/queue",mem.email_address)
-					.then()
-					.catch(function(err){
-						console.log(err);
+			var members = result;
+					mailchimp.post("/automations/f4491285cd/emails/41895f2486/queue",{email_address: members.members[0].email_address})
+					.then(function(result){
+						console.log("here " + result);
 					})
-				}
-			});
-			callback();
-		});
+					.catch(function(err){
+						console.log("Error on send" + err);
+					})
+		})
 		.catch(function(err){
-			console.log(err);
+			console.log("Error on list fetch: " + err);
 		})
 	}
 };
