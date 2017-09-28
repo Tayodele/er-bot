@@ -1,7 +1,7 @@
-var mailchimp = require('./libs/mailchimp.js');
+var fb = require('./libs/facebook.js');
 //var fb = require('./libs/facebook.js');
 
-mailchimp.sendEmailtoList(function(err,res){
+fb.makePost("This is a test",function(err,res){
 	console.log(res+" : "+err);
 });
 /* 
