@@ -11,13 +11,15 @@ self = {
 		mailchimp.get("/lists/"+coreList+"/members")
 		.then(function(result){
 			var members = result;
-					mailchimp.post("/automations/f4491285cd/emails/41895f2486/queue",{email_address: members.members[0].email_address})
+			members.members.forEach(function(mem){
+					mailchimp.post("/automations/f4491285cd/emails/41895f2486/queue",{email_address: mem.email_address})
 					.then(function(result){
 						console.log("here " + result);
 					})
 					.catch(function(err){
 						console.log("Error on send" + err);
 					})
+			});
 		})
 		.catch(function(err){
 			console.log("Error on list fetch: " + err);
