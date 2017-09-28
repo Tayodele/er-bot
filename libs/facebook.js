@@ -4,15 +4,14 @@ var keyfile = './keys.json';
 var keys = JSON.parse(fs.readFileSync(keyfile,'utf8'));
 var accessToken = "";
 
-fb.get("458549294216961?fields=access_token", function(err,res){
-			console.log(res);
-			accessToken = res.access_token;
-		});
-fb.setAccessToken(accessToken);
-
 var self = {
 
 	postComment: function(sPost, sComment, callback) {
+		fb.get("458549294216961?fields=access_token", function(err,res){
+			console.log(res);
+			accessToken = res.access_token;
+		});
+		fb.setAccessToken(accessToken);
 		oParams = {
 			"message": sPost,
 		};
@@ -25,6 +24,11 @@ var self = {
 	},
 
 	makePost: function(sMessage,callback) {
+		fb.get("458549294216961?fields=access_token", function(err,res){
+			console.log(res);
+			accessToken = res.access_token;
+		});
+		fb.setAccessToken(accessToken);
 		var oPostmsg = {
 			"message": sMessage
 		};
